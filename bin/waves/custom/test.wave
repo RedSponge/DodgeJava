@@ -1,0 +1,2 @@
+[i] this is a comment!
+enemy_basic x:100 y:200 spdx:10 spdy:2 width:30 height:30 bounce:true lifetime:100
