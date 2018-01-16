@@ -7,6 +7,7 @@ import java.awt.Rectangle;
 
 import com.redsponge.dodge.Handler;
 import com.redsponge.dodge.display.screen.DodgeScreenComponent;
+import com.redsponge.dodge.display.screen.components.DodgeButtonImportFile;
 import com.redsponge.dodge.display.screen.components.DodgeButtonStart;
 import com.redsponge.dodge.gfx.DodgeFont;
 import com.redsponge.dodge.utils.Utils;
@@ -20,7 +21,7 @@ public class MenuState extends State {
 
 	public void init() {
 		components.add(new DodgeButtonStart(handler));
-		//components.add(new DodgeButtonImportFile(handler));
+		components.add(new DodgeButtonImportFile(handler));
 	}
 
 	public void tick() {

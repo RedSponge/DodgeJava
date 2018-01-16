@@ -117,10 +117,11 @@ public class GameState extends State {
 		wave4 = new Wave4(handler);
 
 		waves = new ArrayList<Wave>();
-		waves.add(wave1);
+		/*waves.add(wave1);
 		waves.add(wave2);
 		waves.add(wave3);
-		waves.add(wave4);
+		waves.add(wave4);*/
+		
 		try {
 			Thread.sleep(20);
 		} catch (Exception e) {
@@ -223,5 +224,10 @@ public class GameState extends State {
 
 	public void setWaitingForNextWave(boolean waitingForNextWave) {
 		this.waitingForNextWave = waitingForNextWave;
+	}
+	
+	
+	public Map<UUID, LivingEntity> getEntities() {
+		return entities;
 	}
 }
