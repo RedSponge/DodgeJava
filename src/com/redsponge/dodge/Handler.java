@@ -6,6 +6,7 @@ import com.redsponge.dodge.input.MouseManager;
 import com.redsponge.dodge.input.files.FileManager;
 import com.redsponge.dodge.states.GameOverState;
 import com.redsponge.dodge.states.GameState;
+import com.redsponge.dodge.states.MenuState;
 import com.redsponge.dodge.utils.timing.TimeHandler;
 
 public class Handler {
@@ -63,4 +64,7 @@ public class Handler {
 		return game.getFileManager();
 	}
 
+	public MenuState getMenuState() {
+		return game.getMenuState();
+	}
 }

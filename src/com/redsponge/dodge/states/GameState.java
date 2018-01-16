@@ -18,6 +18,7 @@ import com.redsponge.dodge.waves.Wave;
 import com.redsponge.dodge.waves.Wave1;
 import com.redsponge.dodge.waves.Wave2;
 import com.redsponge.dodge.waves.Wave3;
+import com.redsponge.dodge.waves.Wave4;
 import com.redsponge.dodge.waves.WaveCustom;
 import com.redsponge.dodge.waves.parsing.WaveParser;
 
@@ -29,6 +30,7 @@ public class GameState extends State {
 	private Wave wave1;
 	private Wave wave2;
 	private Wave wave3;
+	private Wave wave4;
 	private boolean reseting;
 	private boolean isWaveRunning;
 	private int time;
@@ -67,6 +69,7 @@ public class GameState extends State {
 				player.setInvulnerable(false);
 			}
 		}
+		//player.setInvulnerable(true);
 	}
 
 	public void render(Graphics g) {
@@ -111,11 +114,13 @@ public class GameState extends State {
 		wave1 = new Wave1(handler);
 		wave2 = new Wave2(handler);
 		wave3 = new Wave3(handler);
+		wave4 = new Wave4(handler);
 
 		waves = new ArrayList<Wave>();
 		waves.add(wave1);
 		waves.add(wave2);
 		waves.add(wave3);
+		waves.add(wave4);
 		try {
 			Thread.sleep(20);
 		} catch (Exception e) {

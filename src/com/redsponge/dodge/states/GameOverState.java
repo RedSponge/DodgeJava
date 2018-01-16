@@ -5,21 +5,26 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 
 import com.redsponge.dodge.Handler;
+import com.redsponge.dodge.display.screen.DodgeScreenComponent;
+import com.redsponge.dodge.display.screen.components.DodgeButtonBackToMainScreen;
+import com.redsponge.dodge.display.screen.components.DodgeButtonTryAgain;
 import com.redsponge.dodge.gfx.DodgeFont;
 import com.redsponge.dodge.utils.Utils;
 
 public class GameOverState extends State {
 	private int loseTextOpacity;
-	private boolean canTryAgain;
-	private boolean hasTriedAgain;
+	public boolean canTryAgain;
+	public boolean hasTriedAgain;
 	private int counter;
-
+	private boolean buttonsCreated;
+	
 	public GameOverState(Handler handler) {
 		super(handler);
 		this.loseTextOpacity = 0;
 		this.canTryAgain = false;
 		this.counter = 0;
 		this.hasTriedAgain = false;
+		this.buttonsCreated = false;
 	}
 
 	public void tick() {
@@ -29,23 +34,34 @@ public class GameOverState extends State {
 			cMax = 100;
 		}
 		if (this.counter > cMax) {
+			if(!buttonsCreated) {
+				components.add(new DodgeButtonTryAgain(handler, this));
+				components.add(new DodgeButtonBackToMainScreen(handler));
+			}
+			buttonsCreated = true;
 			this.canTryAgain = true;
 		}
-		if ((this.canTryAgain) && (this.handler.getMouseManager().left)) {
-			this.hasTriedAgain = true;
-			com.redsponge.dodge.GameActions.reset();
+		if(canTryAgain) {
+			for(DodgeScreenComponent c : components) {
+				c.tick();
+			}
 		}
 	}
 
 	public void render(Graphics g) {
 		renderBG(g);
 		renderLoseText(g);
+		for(DodgeScreenComponent c : components) {
+			c.render(g);
+		}
 	}
 
 	public void reset() {
+		this.components.clear();
 		this.loseTextOpacity = 0;
 		this.canTryAgain = false;
 		this.counter = 0;
+		this.buttonsCreated = false;
 	}
 
 	public void renderBG(Graphics g) {
@@ -70,16 +86,5 @@ public class GameOverState extends State {
 		Utils.drawCenteredString(g, "Game Over",
 				new Rectangle(0, 0, this.handler.getCanvasWidth(), this.handler.getCanvasHeight() - 100),
 				DodgeFont.GAME_OVER_FONT);
-		renderTryAgain(g);
-	}
-
-	private void renderTryAgain(Graphics g) {
-		if (this.canTryAgain) {
-			g.setColor(com.redsponge.dodge.gfx.DodgeColor.DARK_GREEN);
-			Utils.drawCenteredString(
-					g, "Click to try again", new Rectangle(0, this.handler.getCanvasHeight() / 2,
-							this.handler.getCanvasWidth(), this.handler.getCanvasHeight() / 2),
-					DodgeFont.TRY_AGAIN_FONT);
-		}
 	}
 }
