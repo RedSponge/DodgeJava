@@ -2,6 +2,7 @@ package com.redsponge.dodge.entities;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Rectangle;
 import java.util.UUID;
 
 import com.redsponge.dodge.Handler;
@@ -71,12 +72,24 @@ public abstract class Entity {
 	public UUID getUUID() {
 		return this.uuid;
 	}
-
+	
+	public void setColor(Color color) {
+		this.color = color;
+	}
+	
+	public Color getColor() {
+		return color;
+	}
+	
 	public static float getEntityXCenter(Handler handler, Entity e) {
 		return handler.getCanvasWidth() / 2 - e.getWidth() / 2;
 	}
 
 	public static float getEntityYCenter(Handler handler, Entity e) {
 		return handler.getCanvasHeight() / 2 - e.getHeight() / 2;
+	}
+	
+	public Rectangle asRectangle() {
+		return new Rectangle((int) this.x, (int) this.y, this.width, this.height);
 	}
 }

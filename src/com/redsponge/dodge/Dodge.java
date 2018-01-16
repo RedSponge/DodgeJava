@@ -137,11 +137,11 @@ public class Dodge implements Runnable {
 			timer += now - lastTime;
 			lastTime = now;
 
-			if (delta >= 1.0D) {
+			if (delta >= 1) {
 				tick();
 				render();
 				ticks++;
-				delta -= 1.0D;
+				delta=0;
 			}
 
 			if (timer >= 1000000000L) {

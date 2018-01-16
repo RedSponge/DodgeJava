@@ -19,6 +19,7 @@ import com.redsponge.dodge.waves.Wave1;
 import com.redsponge.dodge.waves.Wave2;
 import com.redsponge.dodge.waves.Wave3;
 import com.redsponge.dodge.waves.Wave4;
+import com.redsponge.dodge.waves.Wave5;
 import com.redsponge.dodge.waves.WaveCustom;
 import com.redsponge.dodge.waves.parsing.WaveParser;
 
@@ -31,6 +32,7 @@ public class GameState extends State {
 	private Wave wave2;
 	private Wave wave3;
 	private Wave wave4;
+	private Wave wave5;
 	private boolean reseting;
 	private boolean isWaveRunning;
 	private int time;
@@ -115,12 +117,14 @@ public class GameState extends State {
 		wave2 = new Wave2(handler);
 		wave3 = new Wave3(handler);
 		wave4 = new Wave4(handler);
+		wave5 = new Wave5(handler);
 
 		waves = new ArrayList<Wave>();
-		/*waves.add(wave1);
+		waves.add(wave1);
 		waves.add(wave2);
 		waves.add(wave3);
-		waves.add(wave4);*/
+		waves.add(wave4);
+		waves.add(wave5);
 		
 		try {
 			Thread.sleep(20);

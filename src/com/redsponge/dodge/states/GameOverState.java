@@ -3,6 +3,7 @@ package com.redsponge.dodge.states;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
+import java.util.ArrayList;
 
 import com.redsponge.dodge.Handler;
 import com.redsponge.dodge.display.screen.DodgeScreenComponent;
@@ -18,6 +19,8 @@ public class GameOverState extends State {
 	private int counter;
 	private boolean buttonsCreated;
 	
+	private boolean resetting = false;
+	
 	public GameOverState(Handler handler) {
 		super(handler);
 		this.loseTextOpacity = 0;
@@ -25,9 +28,13 @@ public class GameOverState extends State {
 		this.counter = 0;
 		this.hasTriedAgain = false;
 		this.buttonsCreated = false;
+		this.resetting = false;
 	}
 
 	public void tick() {
+		if(resetting) {
+			return;
+		}
 		this.counter += 1;
 		int cMax = 500;
 		if (this.hasTriedAgain) {
@@ -57,11 +64,13 @@ public class GameOverState extends State {
 	}
 
 	public void reset() {
-		this.components.clear();
+		this.resetting = true;
 		this.loseTextOpacity = 0;
 		this.canTryAgain = false;
 		this.counter = 0;
 		this.buttonsCreated = false;
+		this.components = new ArrayList<DodgeScreenComponent>();
+		this.resetting = false;
 	}
 
 	public void renderBG(Graphics g) {

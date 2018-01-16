@@ -1,7 +1,7 @@
 package com.redsponge.dodge;
 
 public class Launcher {
-	public static boolean showFPS = false;
+	public static boolean showFPS = true;
 
 	public static void main(String[] args) {
 		System.out.println("[+] Starting Game");

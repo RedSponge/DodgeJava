@@ -19,10 +19,8 @@ public class DodgeButtonTryAgain extends DodgeButton {
 	}
 	
 	public void trigger() {
-		if ((state.canTryAgain)) {
-			state.hasTriedAgain = true;
-			GameActions.reset();
-		}
+		state.hasTriedAgain = true;
+		GameActions.reset();
 	}
 
 }

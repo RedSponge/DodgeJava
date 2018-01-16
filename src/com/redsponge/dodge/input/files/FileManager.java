@@ -27,7 +27,7 @@ public class FileManager {
 	public String readInternalFile(String filename) {
 		String text = "";
 		try {
-			File f = new File(getClass().getClassLoader().getResource(filename).getPath());
+			File f = new File(getClass().getClassLoader().getResource(filename).getPath().replaceAll("%20", " "));
 			BufferedReader br = new BufferedReader(new FileReader(f));
 			int content;
 			while ((content = br.read()) != -1) {
