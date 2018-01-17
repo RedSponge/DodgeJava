@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 import com.redsponge.dodge.Handler;
 import com.redsponge.dodge.entities.actors.enemies.Enemy;
-import com.redsponge.dodge.entities.actors.enemies.EnemyBasic;
+import com.redsponge.dodge.entities.actors.enemies.basic.EnemyBasic;
 import com.redsponge.dodge.waves.EnemyWaveComponent;
 
 public class WaveParser {

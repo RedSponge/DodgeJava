@@ -3,6 +3,7 @@ package com.redsponge.dodge.entities;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
+import java.awt.image.BufferedImage;
 import java.util.UUID;
 
 import com.redsponge.dodge.Handler;
@@ -16,6 +17,7 @@ public abstract class Entity {
 	protected Handler handler;
 	protected Color color;
 	protected UUID uuid;
+	protected BufferedImage sprite;
 
 	public Entity(Handler handler, float x, float y, Color color, int width, int height, boolean center) {
 		this.handler = handler;

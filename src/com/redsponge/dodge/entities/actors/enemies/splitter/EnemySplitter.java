@@ -1,6 +1,7 @@
-package com.redsponge.dodge.entities.actors.enemies;
+package com.redsponge.dodge.entities.actors.enemies.splitter;
 
 import com.redsponge.dodge.Handler;
+import com.redsponge.dodge.entities.actors.enemies.Enemy;
 import com.redsponge.dodge.gfx.DodgeColor;
 import java.awt.Graphics;
 import java.util.ArrayList;

@@ -14,4 +14,6 @@ public class DodgeColor {
 	public static final Color GOLD = new Color(255, 212, 0);
 
 	public static final Color SILVER = new Color(168, 168, 168);
+	
+	public static final Color PURPLE = new Color(255, 0, 255);
 }

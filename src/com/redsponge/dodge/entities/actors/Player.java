@@ -2,22 +2,27 @@ package com.redsponge.dodge.entities.actors;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.image.BufferedImage;
 
 import com.redsponge.dodge.Handler;
 import com.redsponge.dodge.entities.Entity;
+import com.redsponge.dodge.gfx.AssetsHandler;
 import com.redsponge.dodge.gfx.DodgeColor;
 import com.redsponge.dodge.input.KeyManager;
 
 public class Player extends LivingEntity {
 	protected float speed;
 	protected boolean invulnerable;
+	@SuppressWarnings("unused")
 	private static final Color INVULNERABLE_COLOR = DodgeColor.GOLD;
+	private static BufferedImage INVULNERABLE_IMAGE;
 
 	public Player(Handler handler, float x, float y, float speed, int width, int height) {
 		super(handler, x, y, Color.GREEN, width, height, speed, speed, true);
 		this.speed = speed;
 		invulnerable = false;
-
+		sprite = AssetsHandler.getImage(handler, "/assets/textures/entity/player/player.png");
+		INVULNERABLE_IMAGE = AssetsHandler.getImage(handler, "/assets/textures/entity/player/player_invulnerable.png");
 		init();
 	}
 
@@ -31,8 +36,8 @@ public class Player extends LivingEntity {
 	}
 
 	public void render(Graphics g) {
-		g.setColor((invulnerable) ? INVULNERABLE_COLOR : color);
-		g.fillRect((int) x, (int) y, width, height);
+		//g.setColor((invulnerable) ? INVULNERABLE_COLOR : color);
+		g.drawImage((invulnerable)?INVULNERABLE_IMAGE:sprite, (int) x, (int) y, width, height, null);
 	}
 
 	private void updateMovement() {

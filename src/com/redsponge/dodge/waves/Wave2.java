@@ -3,7 +3,7 @@ package com.redsponge.dodge.waves;
 import java.util.ArrayList;
 
 import com.redsponge.dodge.Handler;
-import com.redsponge.dodge.entities.actors.enemies.EnemyFollower;
+import com.redsponge.dodge.entities.actors.enemies.follower.EnemyFollower;
 
 public class Wave2 extends Wave {
 	public Wave2(Handler handler) {

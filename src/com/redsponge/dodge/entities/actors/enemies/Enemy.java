@@ -77,4 +77,8 @@ public abstract class Enemy extends LivingEntity {
 	public int getLifeTime() {
 		return lifeTime;
 	}
+
+	public void setLifeTime(int lifeTime) {
+		this.lifeTime = lifeTime;
+	}
 }

@@ -3,8 +3,8 @@ package com.redsponge.dodge.waves;
 import java.util.ArrayList;
 
 import com.redsponge.dodge.Handler;
-import com.redsponge.dodge.entities.actors.enemies.EnemyBasic;
-import com.redsponge.dodge.entities.actors.enemies.EnemySplitter;
+import com.redsponge.dodge.entities.actors.enemies.basic.EnemyBasic;
+import com.redsponge.dodge.entities.actors.enemies.splitter.EnemySplitter;
 
 public class Wave3 extends Wave {
 

@@ -23,13 +23,14 @@ public class ConfigFile {
 	private String getEntry(String entry) {
 		for (String line : lines) {
 			if (line.startsWith(entry)) {
-				return line.substring(entry.length() + 1);
+				return line.substring(entry.length() + 1).trim();
 			}
 		}
 		return "";
 	}
 
 	public boolean getBoolean(String entry) {
+		System.out.println(Boolean.parseBoolean(getEntry(entry)));
 		return Boolean.parseBoolean(getEntry(entry));
 	}
 

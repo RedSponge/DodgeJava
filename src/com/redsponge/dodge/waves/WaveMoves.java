@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import com.redsponge.dodge.Handler;
 import com.redsponge.dodge.entities.actors.enemies.Enemy;
-import com.redsponge.dodge.entities.actors.enemies.EnemyBasic;
+import com.redsponge.dodge.entities.actors.enemies.basic.EnemyBasic;
 import com.redsponge.dodge.utils.Utils;
 import com.redsponge.dodge.utils.math.MathUtils;
 import com.redsponge.dodge.utils.math.Vector;
@@ -49,43 +49,55 @@ public class WaveMoves {
 
 		return ar;
 	}
-
+	
 	public static ArrayList<EnemyWaveComponent> getBasicEnemyX(Handler handler, float speed, int timeUntilSpawn) {
+		return getBasicEnemyX(handler, speed, timeUntilSpawn, false);
+	}
+
+	public static ArrayList<EnemyWaveComponent> getBasicEnemyX(Handler handler, float speed, int timeUntilSpawn, boolean bounce) {
 		ArrayList<EnemyWaveComponent> ar = new ArrayList<EnemyWaveComponent>();
 		double angle1 = MathUtils.getAngleBetweenTwoPoints(0, 0, handler.getCanvasWidth() + 20,
 				handler.getCanvasHeight() + 10); // [\] <- ANGLE
 		double angle2 = MathUtils.getAngleBetweenTwoPoints(handler.getCanvasWidth() + 20, 0, 0,
 				handler.getCanvasHeight() + 10); // [/] <- ANGLE
-		ar.add(new EnemyWaveComponent(new EnemyBasic(handler, 0, 0, 20, 20, false, Integer.MAX_VALUE,
+		ar.add(new EnemyWaveComponent(new EnemyBasic(handler, 0, 0, 20, 20, bounce, Integer.MAX_VALUE,
 				new Vector(angle1, speed, false), false), timeUntilSpawn));
 		ar.add(new EnemyWaveComponent(
-				new EnemyBasic(handler, handler.getCanvasWidth() - 20, handler.getCanvasHeight() - 20, 20, 20, false,
+				new EnemyBasic(handler, handler.getCanvasWidth() - 20, handler.getCanvasHeight() - 20, 20, 20, bounce,
 						Integer.MAX_VALUE, new Vector(angle1, speed, true), false),
 				0));
-		ar.add(new EnemyWaveComponent(new EnemyBasic(handler, 0, handler.getCanvasHeight() - 20, 20, 20, false,
+		ar.add(new EnemyWaveComponent(new EnemyBasic(handler, 0, handler.getCanvasHeight() - 20, 20, 20, bounce,
 				Integer.MAX_VALUE, new Vector(angle2, speed, true), false), 0));
-		ar.add(new EnemyWaveComponent(new EnemyBasic(handler, handler.getCanvasWidth() - 20, 0, 20, 20, false,
+		ar.add(new EnemyWaveComponent(new EnemyBasic(handler, handler.getCanvasWidth() - 20, 0, 20, 20, bounce,
 				Integer.MAX_VALUE, new Vector(angle2, speed, false), false), 0));
 		return ar;
 	}
 
 	public static ArrayList<EnemyWaveComponent> getBasicEnemyCross(Handler handler, float speed, int timeUntilSpawn) {
+		return getBasicEnemyCross(handler, speed, timeUntilSpawn, false);
+	}
+	
+	public static ArrayList<EnemyWaveComponent> getBasicEnemyCross(Handler handler, float speed, int timeUntilSpawn, boolean bounce) {
 		ArrayList<EnemyWaveComponent> ar = new ArrayList<EnemyWaveComponent>();
-		ar.add(new EnemyWaveComponent(new EnemyBasic(handler, Utils.getMidX(handler, 20), 0, 20, 20, false,
+		ar.add(new EnemyWaveComponent(new EnemyBasic(handler, Utils.getMidX(handler, 20), 0, 20, 20, bounce,
 				Integer.MAX_VALUE, 0, speed / 1.5f, false), timeUntilSpawn));
-		ar.add(new EnemyWaveComponent(new EnemyBasic(handler, 0, Utils.getMidY(handler, 20), 20, 20, false,
+		ar.add(new EnemyWaveComponent(new EnemyBasic(handler, 0, Utils.getMidY(handler, 20), 20, 20, bounce,
 				Integer.MAX_VALUE, speed, 0, false), 0));
 		ar.add(new EnemyWaveComponent(new EnemyBasic(handler, handler.getCanvasWidth() - 20, Utils.getMidY(handler, 20),
-				20, 20, false, Integer.MAX_VALUE, -speed, 0, false), 0));
+				20, 20, bounce, Integer.MAX_VALUE, -speed, 0, false), 0));
 		ar.add(new EnemyWaveComponent(new EnemyBasic(handler, Utils.getMidX(handler, 20),
-				handler.getCanvasHeight() - 20, 20, 20, false, Integer.MAX_VALUE, 0, -speed / 1.5f, false), 0));
+				handler.getCanvasHeight() - 20, 20, 20, bounce, Integer.MAX_VALUE, 0, -speed / 1.5f, false), 0));
 		return ar;
 	}
 
-	public static ArrayList<EnemyWaveComponent> getBasicEnemyMash(Handler handler, float speed, int timeUntilSpawn) {
+	public static ArrayList<EnemyWaveComponent> getBasicEnemyMash(Handler handler, float speed, int timeUntilSpawn, boolean bounce) {
 		ArrayList<EnemyWaveComponent> ar = new ArrayList<EnemyWaveComponent>();
-		ar.addAll(getBasicEnemyCross(handler, speed, timeUntilSpawn));
-		ar.addAll(getBasicEnemyX(handler, speed, 0));
+		ar.addAll(getBasicEnemyCross(handler, speed, timeUntilSpawn, bounce));
+		ar.addAll(getBasicEnemyX(handler, speed, 0, bounce));
 		return ar;
+	}
+	
+	public static ArrayList<EnemyWaveComponent> getBasicEnemyMash(Handler handler, float speed, int timeUntilSpawn) {
+		return getBasicEnemyMash(handler, speed, timeUntilSpawn, false);
 	}
 }
